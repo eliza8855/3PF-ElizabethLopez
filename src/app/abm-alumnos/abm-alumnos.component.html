@@ -1,0 +1,108 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLongTitle">Nuevo Alumno</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()">
+    </button>
+  </div>
+  <div class="modal-body">
+  <form class="pb-2" [formGroup]="Form">
+    <div class="row">
+        <div class="col">
+                <label class=" p-1" for="nombres">Nombres</label>
+                <input type="text" formControlName="nombres" class="form-control" [ngClass]="{'is-invalid':Form.controls['nombres'].invalid && (Form.controls['nombres'].dirty || Form.controls['nombres'].touched)}" id="nombres" placeholder="Nombres">
+                <div  class="invalid-feedback">
+                    Campo obligatorio
+                </div>
+
+        </div>
+        <div class="col">
+                <label class=" p-1" for="apellidos">Apellidos</label>
+                <input type="text" formControlName="apellidos" class="form-control" [ngClass]="{'is-invalid':Form.controls['apellidos'].invalid && (Form.controls['apellidos'].dirty || Form.controls['apellidos'].touched)}" id="apellidos" placeholder="Apellidos">
+                <div  class="invalid-feedback">
+                    Campo obligatorio
+                </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="tipoDocumento" class="form-label p-1 m-0">Tipo Documento Identidad</label>
+            <select id="tipoDocumento" formControlName="documentoIdentidadOptions" class="form-select" [ngClass]="{'is-invalid':Form.controls['documentoIdentidadOptions'].invalid && (Form.controls['documentoIdentidadOptions'].dirty || Form.controls['documentoIdentidadOptions'].touched)}">
+              <option>DNI</option>
+              <option>CE</option>
+              <option>Pasaporte</option>
+            </select>
+            <div  class="invalid-feedback">
+                Campo obligatorio
+            </div>
+        </div>
+        <div class="col">
+                <label class=" p-1" for="numeroDocumento">Número de Documento</label>
+                <input type="text"  formControlName="documentoIdentidad"  class="form-control" id="numeroDocumento" placeholder="Apellidos" [ngClass]="{'is-invalid':Form.controls['documentoIdentidad'].invalid && (Form.controls['documentoIdentidad'].dirty || Form.controls['documentoIdentidad'].touched)}">
+                <div  class="invalid-feedback">
+                    Campo obligatorio, Ingrese máximo 10 dígitos
+                </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <label class=" p-1" for="direccion">Dirección</label>
+            <input type="text" formControlName="direccion" class="form-control" id="direccion" placeholder="Dirección" [ngClass]="{'is-invalid':Form.controls['direccion'].invalid && (Form.controls['direccion'].dirty || Form.controls['direccion'].touched)}">
+            <div  class="invalid-feedback">
+                Campo obligatorio
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+                <label class=" p-1" for="nombres">Teléfono</label>
+                <input type="number" formControlName="telefono" class="form-control" id="telefono" placeholder="Teléfono" [ngClass]="{'is-invalid':Form.controls['telefono'].invalid && (Form.controls['telefono'].dirty || Form.controls['telefono'].touched)}">
+                <div  class="invalid-feedback">
+                    Campo obligatorio
+                </div>
+        </div>
+        <div class="col">
+                <label class=" p-1" for="apellidos">Operador</label>
+                <select id="tipoTelefono" formControlName="tipoTelefono" class="form-select" [ngClass]="{'is-invalid':Form.controls['tipoTelefono'].invalid && (Form.controls['tipoTelefono'].dirty || Form.controls['tipoTelefono'].touched)}">
+                    <option>CLARO</option>
+                    <option>BITEL</option>
+                    <option>ENTEL</option>
+                    <option>MOVISTAR</option>
+                </select>
+                <div  class="invalid-feedback">
+                    Campo obligatorio
+                </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label class=" p-1" for="correo">Correo Electrónico</label>
+            <input type="email" class="form-control" formControlName="correo" id="correo" placeholder="Correo Electrónico" [ngClass]="{'is-invalid':Form.controls['correo'].invalid && (Form.controls['correo'].dirty || Form.controls['correo'].touched)}">
+            <div  class="invalid-feedback">
+                Campo obligatorio, ingrese un formato válido
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col">
+                <label class=" p-1" for="examenParcial">Examen Parcial</label>
+                <input type="number" class="form-control"  formControlName="examenParcial" id="examenParcial">
+        </div>
+        <div class="col">
+                <label class=" p-1" for="examenFinal">Examen Final</label>
+                <input type="number" class="form-control" formControlName="examenFinal" id="examenFinal">
+        </div>
+        <div class="col">
+            <label class=" p-1" for="proyecto">Proyecto</label>
+            <input type="number" class="form-control" formControlName="proyecto" id="proyecto">
+    </div>
+    </div>
+  </form>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+    <button type="submit" ngbAutofocus class="btn btn-primary"(click)="saveModal()" [disabled]="!Form.valid">Ingresar</button>
+  </div>
