@@ -1,6 +1,9 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Subscription } from 'rxjs';
+import { ApiAlumnosService } from '../services/api-alumnos.service';
 
 @Component({
   selector: 'app-abm-alumnos',
@@ -21,7 +24,7 @@ export class AbmAlumnosComponent implements OnInit {
   examenFinal = new FormControl();
   proyecto = new FormControl();
 
- nuevoAlumno = [];
+  nuevoAlumno = [];
 
  Form: FormGroup = new FormGroup ({
    nombres: this.nombres,
@@ -39,11 +42,15 @@ export class AbmAlumnosComponent implements OnInit {
  })
 
 
-  constructor(public activeModal: NgbActiveModal) { 
+  constructor(
+    public activeModal: NgbActiveModal ,
+    private api : ApiAlumnosService
+   ) { 
     this.addFormValidators();
   }
  
   ngOnInit(): void {
+
   }
   
   private addFormValidators(): void {
@@ -94,6 +101,15 @@ export class AbmAlumnosComponent implements OnInit {
 
   saveModal() {
    this.nuevoAlumno = this.Form.value
+    this.api.createNewStudent(this.nuevoAlumno).subscribe({
+      next: (res) => {
+        alert("nuevo Alumno agregado")
+        this.Form.reset();
+      },
+      error: () => {
+        alert("se ha producido un error")
+      }
+    })
    console.log(this.Form.value)
    this.activeModal.dismiss();
   }

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from 'src/commons/student.interface';
 import { StudentList } from 'src/commons/StudentList.constant';
+import { ApiAlumnosService } from '../services/api-alumnos.service';
+import {MatDialog} from '@angular/material/dialog'
+import { MatTableDataSource } from '@angular/material/table';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AbmAlumnosComponent } from '../abm-alumnos/abm-alumnos.component';
 
 @Component({
   selector: 'app-lista-alumnos',
@@ -9,19 +14,39 @@ import { StudentList } from 'src/commons/StudentList.constant';
 })
 export class ListaAlumnosComponent implements OnInit {
 
-  constructor() { }
+  displayedColumns : string[] = ['id', 'nombre', 'telefono', 'correo', 'examenParcial', 'examenFinal', 'proyecto', 'action'];
+  constructor( 
+    private dialog: MatDialog,
+    private api: ApiAlumnosService,
+    private modalService: NgbModal
+     ) { }
+
+  students: any;
 
   ngOnInit(): void {
+    this.api.refresh$
+    .subscribe(()=>{
+      this.getStudentList();
+    })
+
+    this.getStudentList()
   }
 
-  students = StudentList; 
-
-  promedyGrade(student: Student): number {
-    const result = (student.Math + student.Literature + student.English) / 3; 
-    return result;
+  getStudentList() {
+    this.api.getStudentList().subscribe( {
+     next: (res) => {
+       this.students =  new MatTableDataSource(res);
+     },
+     error: (err) => {
+       alert ("Hubo un error")
+     }
+    }
+    )
   }
 
-  getGender(student: Student): string {
-   return  student.gender == 'M' ? 'Masculino': 'Femenino' 
+  editStudent() {
+    this.modalService.open(AbmAlumnosComponent , {size: 'lg'});
   }
+
+
 }

@@ -1,32 +1,57 @@
-<table class="table table-striped table-bordered">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">NOMBRE</th>
-        <th scope="col">APELLIDO</th>
-        <th scope="col">GENERO</th>
-        <th scope="col">MATEMATICAS</th>
-        <th scope="col">INGLES</th>
-        <th scope="col">LITERATURA</th>
-        <th scope="col">PROMEDIO</th>
-        <th scope="col">COMENTARIOS</th>  
-      </tr>
-    </thead>
-    <tbody>
-    <ng-container *ngFor="let student of students">
-        <tr>
-            <th scope="row">{{student.userId}}</th>
-            <td>{{student.name}}</td>
-            <td>{{student.lastname}}</td>
-            <td>{{getGender(student)}}</td>
-            <td class="text-center">{{student.Math}}</td>
-            <td class="text-center">{{student.English}}</td>
-            <td class="text-center">{{student.Literature}}</td>
-            <td class="text-center" [ngClass]="[ promedyGrade(student) > 10 ? 'verde':'rojo']">{{promedyGrade(student) | number: '2.2-2'}}</td>
-            <td *ngIf="promedyGrade(student) <= 10 ">¡Desaprobado!, repetirás el año</td>
-            <td *ngIf="promedyGrade(student) > 10 && promedyGrade(student) < 13">¡Aprobaste!, pero necesitas esforzarte un poco más</td>
-            <td *ngIf="promedyGrade(student) >= 13 ">Has aprobado, ¡Felicidades!</td>
-          </tr>
+<table mat-table [dataSource]="students" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef> Nombre completo </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombres}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="telefono">
+    <th mat-header-cell *matHeaderCellDef> Telefono </th>
+    <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+  </ng-container>
+
+    <ng-container matColumnDef="correo">
+      <th mat-header-cell *matHeaderCellDef> Correo </th>
+      <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
     </ng-container>
-    </tbody>
-  </table>
+
+  <ng-container matColumnDef="examenParcial">
+    <th mat-header-cell *matHeaderCellDef> Examen Parcial </th>
+    <td mat-cell *matCellDef="let element"> {{element.examenParcial}} </td>
+  </ng-container>
+
+    <ng-container matColumnDef="examenFinal">
+      <th mat-header-cell *matHeaderCellDef> Examen Final </th>
+      <td mat-cell *matCellDef="let element"> {{element.examenFinal}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="proyecto">
+      <th mat-header-cell *matHeaderCellDef> Proyecto </th>
+      <td mat-cell *matCellDef="let element"> {{element.proyecto}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let element"> 
+      <button mat-icon-button color="primary" (click)="editStudent()">
+       <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn">
+        <mat-icon>delete</mat-icon>
+       </button>
+      </td>
+    </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

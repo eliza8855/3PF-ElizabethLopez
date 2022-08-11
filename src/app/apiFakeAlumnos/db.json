@@ -1,0 +1,60 @@
+{
+  "studentList": [
+    {
+      "nombres": "fadfas",
+      "apellidos": "fasdf",
+      "documentoIdentidadOptions": "CE",
+      "documentoIdentidad": "asdfasd",
+      "direccion": "fasdfa",
+      "telefono": 354354,
+      "tipoTelefono": "BITEL",
+      "correo": "fasd@gmail.com",
+      "examenParcial": null,
+      "examenFinal": null,
+      "proyecto": null,
+      "id": 1
+    },
+    {
+      "nombres": "fasdf",
+      "apellidos": "fasdfasd",
+      "documentoIdentidadOptions": "Pasaporte",
+      "documentoIdentidad": "fasdfasd",
+      "direccion": "afsdfasdf",
+      "telefono": 341234123,
+      "tipoTelefono": "ENTEL",
+      "correo": "fdfasdf@gmail.com",
+      "examenParcial": 12,
+      "examenFinal": 12,
+      "proyecto": 12,
+      "id": 2
+    },
+    {
+      "nombres": "dASDas",
+      "apellidos": "ASDasd",
+      "documentoIdentidadOptions": "CE",
+      "documentoIdentidad": "ASDasd",
+      "direccion": "dASDasd",
+      "telefono": 321231234,
+      "tipoTelefono": "BITEL",
+      "correo": "asdA@ASD.COM",
+      "examenParcial": null,
+      "examenFinal": null,
+      "proyecto": null,
+      "id": 3
+    },
+    {
+      "nombres": "fsdfasdf",
+      "apellidos": "fasdfas",
+      "documentoIdentidadOptions": "CE",
+      "documentoIdentidad": "fasdfasd",
+      "direccion": "fasdfasdfa",
+      "telefono": 123123,
+      "tipoTelefono": "CLARO",
+      "correo": "fasd@gmail.com",
+      "examenParcial": null,
+      "examenFinal": null,
+      "proyecto": null,
+      "id": 4
+    }
+  ]
+}
