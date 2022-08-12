@@ -18,7 +18,7 @@ export class ListaAlumnosComponent implements OnInit {
   constructor( 
     private dialog: MatDialog,
     private api: ApiAlumnosService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
      ) { }
 
   students: any;
@@ -44,9 +44,34 @@ export class ListaAlumnosComponent implements OnInit {
     )
   }
 
-  editStudent() {
-    this.modalService.open(AbmAlumnosComponent , {size: 'lg'});
-  }
+  // editStudent(row: any) {
+  //   const nombres = row.nombres;
+  //   this.modalService.open(AbmAlumnosComponent , {
+  //     size: 'lg',
+  //     centered: true 
+  //     {
+  //       nombres
+  //     }
+      
 
+  //     // apellidos = new FormControl();
+  //     // documentoIdentidadOptions = new FormControl();
+  //     // documentoIdentidad = new FormControl();
+  //     // direccion = new FormControl();
+  //     // telefono = new FormControl();
+  //     // tipoTelefono = new FormControl();
+  //     // correo = new FormControl();
+  //     // examenParcial = new FormControl();
+  //     // examenFinal = new FormControl();
+  //     // proyecto = new FormControl();
+  //   } );
+  // }
+
+  deleteStudent(row: any) {
+    this.api.deleteStudent(row.id)
+    .subscribe( res => {
+      alert("Estudiante eliminado")
+    })
+  }
 
 }

@@ -14,6 +14,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon'
+import { NamePipe } from './pipes/names.pipe';
+import { TitleColorDirective } from './directives/title-color.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import {MatIconModule} from '@angular/material/icon'
     NavBarComponent,
     ToolBarComponent,
     ListaAlumnosComponent,
-    AbmAlumnosComponent
+    AbmAlumnosComponent,
+    NamePipe,
+    TitleColorDirective
   ],
   imports: [
     BrowserModule,

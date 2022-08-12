@@ -23,7 +23,6 @@ export class AbmAlumnosComponent implements OnInit {
   examenParcial = new FormControl();
   examenFinal = new FormControl();
   proyecto = new FormControl();
-
   nuevoAlumno = [];
 
  Form: FormGroup = new FormGroup ({

@@ -29,5 +29,22 @@ export class ApiAlumnosService {
     )
   }
 
+  updateStudent( data: any, id: number) {
+    return this.http.put<any>("http://localhost:3000/studentList/"+id, data)
+    .pipe(
+      tap(()=> {
+        this._refresh$.next()
+      })
+    )
+  }
+
+  deleteStudent(id: number) {
+    return this.http.delete<any>("http://localhost:3000/studentList/"+id)
+    .pipe(
+      tap(()=> {
+        this._refresh$.next()
+      })
+    )
+  }
 
 }
