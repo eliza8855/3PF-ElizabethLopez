@@ -55,20 +55,6 @@
       "examenFinal": 12,
       "proyecto": 18,
       "id": 4
-    },
-    {
-      "nombres": "Melissa",
-      "apellidos": "Llosa Valerin",
-      "documentoIdentidadOptions": "DNI",
-      "documentoIdentidad": "57126576",
-      "direccion": "Calle Las Camelias 1234",
-      "telefono": 872868734,
-      "tipoTelefono": "ENTEL",
-      "correo": "melissa@gmail.com",
-      "examenParcial": 15,
-      "examenFinal": 12,
-      "proyecto": 14,
-      "id": 5
     }
   ]
 }

@@ -16,6 +16,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon'
 import { NamePipe } from './pipes/names.pipe';
 import { TitleColorDirective } from './directives/title-color.directive';
+import { ListaCursosComponent } from './lista-cursos/lista-cursos.component';
+import { PaginaNoEncontradaComponent } from './pagina-no-encontrada/pagina-no-encontrada.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ListaClasesComponent } from './lista-clases/lista-clases.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,10 @@ import { TitleColorDirective } from './directives/title-color.directive';
     ListaAlumnosComponent,
     AbmAlumnosComponent,
     NamePipe,
-    TitleColorDirective
+    TitleColorDirective,
+    ListaCursosComponent,
+    PaginaNoEncontradaComponent,
+    ListaClasesComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +44,9 @@ import { TitleColorDirective } from './directives/title-color.directive';
     MatDialogModule,
     MatTableModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    AppRoutingModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
