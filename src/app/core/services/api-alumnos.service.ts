@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { Student } from 'src/app/models/student.interface';
+import { environment} from 'src/environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,7 @@ import { tap } from 'rxjs/operators';
 export class ApiAlumnosService {
 
   private _refresh$ = new Subject<void>();
+  private readonly api: string = environment.api;
 
   constructor(private http : HttpClient) {}
 
@@ -16,12 +19,12 @@ export class ApiAlumnosService {
     return this._refresh$
   }
 
-  getStudentList() {
-    return this.http.get<any>("http://localhost:3000/studentList/");
+  getStudentList(): Observable<Student[]> {
+    return this.http.get<Student[]>( `${this.api}/alumnos`);
   }
 
   createNewStudent( data: any ) {
-    return this.http.post<any>("http://localhost:3000/studentList/", data)
+    return this.http.post<any>(this.api + '/alumnos', data)
     .pipe(
       tap(()=> {
         this._refresh$.next()
@@ -30,7 +33,7 @@ export class ApiAlumnosService {
   }
 
   updateStudent( data: any, id: number) {
-    return this.http.put<any>("http://localhost:3000/studentList/"+id, data)
+    return this.http.put<any>(this.api + '/alumnos'+id, data)
     .pipe(
       tap(()=> {
         this._refresh$.next()
@@ -39,7 +42,7 @@ export class ApiAlumnosService {
   }
 
   deleteStudent(id: number) {
-    return this.http.delete<any>("http://localhost:3000/studentList/"+id)
+    return this.http.delete<any>(this.api + '/alumnos'+id)
     .pipe(
       tap(()=> {
         this._refresh$.next()

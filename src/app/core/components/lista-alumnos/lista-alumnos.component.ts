@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Student } from 'src/commons/student.interface';
-import { StudentList } from 'src/commons/StudentList.constant';
-import { ApiAlumnosService } from '../services/api-alumnos.service';
+import { ApiAlumnosService } from '../../services/api-alumnos.service';
 import {MatDialog} from '@angular/material/dialog'
 import { MatTableDataSource } from '@angular/material/table';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';

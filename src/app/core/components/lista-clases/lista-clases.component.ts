@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiClasesService } from '../services/api-clases.service';
+import { ApiClasesService } from '../../services/api-clases.service';
 
 @Component({
   selector: 'app-lista-clases',
@@ -15,6 +15,7 @@ export class ListaClasesComponent implements OnInit {
   ) { 
 
     this.clasesService.obtenerPromiseClases().then((clases) =>  {
+      console.log('data de clases',clases)
       this.clases = clases;
     }).catch((error) => {
       console.log(error);

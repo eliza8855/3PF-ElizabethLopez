@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { ApiCursosService } from '../services/api-cursos.service';
+import { ApiCursosService } from '../../services/api-cursos.service';
 
 @Component({
   selector: 'app-lista-cursos',

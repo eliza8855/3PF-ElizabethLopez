@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
-import { ApiAlumnosService } from '../services/api-alumnos.service';
+import { ApiAlumnosService } from '../../services/api-alumnos.service';
 
 @Component({
   selector: 'app-abm-alumnos',
